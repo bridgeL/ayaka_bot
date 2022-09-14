@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "ayaka-bot"
+version = "0.1.0"
+description = ""
+authors = ["Su <wxlxy316@163.com>"]
+readme = "README.md"
+packages = [
+    {include = "../ayakabot"}
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pydantic = "^1.10.2"
+fastapi = "^0.82.0"
+pygtrie = "^2.5.0"
+yarl = "^1.8.1"
+loguru = "^0.6.0"
+uvicorn = {extras = ["standard"], version = "^0.18.3"}
+bs4 = "^0.0.1"
+requests = "^2.28.1"
+pypinyin = "^0.47.1"
+colorama = "^0.4.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
