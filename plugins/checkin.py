@@ -9,7 +9,7 @@ from .bag import add_money
 from .utils.name import get_name
 
 
-app = AyakaApp('签到', only_group=True)
+app = AyakaApp('checkin', only_group=True)
 app.help = "签到"
 
 

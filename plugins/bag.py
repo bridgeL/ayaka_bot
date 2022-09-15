@@ -4,7 +4,7 @@
 from ayaka import *
 from .utils.name import get_name, get_uid_name
 
-app = AyakaApp('背包', only_group=True)
+app = AyakaApp('bag', only_group=True)
 app.help = "背包"
 
 

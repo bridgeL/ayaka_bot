@@ -3,26 +3,21 @@ from ayaka import *
 from .bag import add_money
 from .utils.name import get_name
 
-app = AyakaApp("祈祷", only_group=True, no_storage=True)
-app.help = '祈祷\n[#pray] 为群里随机一人（除了自己）祈祷随机金币\n概率公式\n 1% +66666\n 8% +6666\n60% +666\n30% +66\n 1% -66666'
-
-data = [
-    [1, -66666],
-    [10, 66],
-    [80, 666],
-    [10, 6666],
-    [2, 66666],
-]
-
-data2 = [[sum(d[0] for d in data[:i+1]), d[1]] for i, d in enumerate(data)]
+app = AyakaApp("pray", only_group=True)
+app.help = '祈福\n[#pray] 为群里随机一人（除了自己）祈祷随机金币\n概率公式\n 1% +66666\n 8% +6666\n60% +666\n30% +66\n 1% -66666'
 
 
 def get_diff():
-    r = randint(0, data2[-1][0] - 1)
-    for i, d in enumerate(data2):
-        if r < d[0]:
-            break
-    return data2[i][1]
+    i = randint(0, 99)
+    if i == 0:
+        return -66666
+    if i <= 30:
+        return 66
+    if i <= 90:
+        return 666
+    if i <= 98:
+        return 6666
+    return 66666
 
 
 @app.on_command(["pray", "祈祷"])
