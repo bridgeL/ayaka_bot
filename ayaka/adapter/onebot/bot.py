@@ -11,7 +11,7 @@ from .websocket import FastAPIWebSocket
 from .message import Message, MessageSegment
 from .model import DataclassEncoder
 
-from .._logger import logger
+from ..logger import logger
 
 
 class _ApiCall(Protocol):

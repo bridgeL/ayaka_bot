@@ -4,8 +4,8 @@ from fastapi import WebSocket
 from collections import defaultdict
 from typing import Any, Callable, Awaitable, Dict, List
 from .onebot import Bot, FastAPIWebSocket, Event, json_to_event
-from ._app import server_app
-from ._logger import logger
+from .app import server_app
+from .logger import logger
 
 
 def on_send(func: Callable[[Bot, str, dict], Awaitable]):

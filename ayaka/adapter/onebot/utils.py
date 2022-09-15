@@ -1,5 +1,5 @@
 from typing import Optional
-from .._logger import logger
+from ..logger import logger
 
 
 def bool_to_str(b: Optional[bool]) -> Optional[str]:

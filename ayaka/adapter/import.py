@@ -1,7 +1,7 @@
 import re
 import importlib
 from pathlib import Path
-from ._logger import logger
+from .logger import logger
 
 
 # 导入模块

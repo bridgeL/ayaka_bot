@@ -9,7 +9,7 @@ from .result import ResultStore
 from .model import DataclassEncoder
 from .message import Message
 
-from .._logger import logger
+from ..logger import logger
 
 if TYPE_CHECKING:
     from .bot import Bot
