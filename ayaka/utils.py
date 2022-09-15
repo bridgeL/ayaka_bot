@@ -1,7 +1,18 @@
 import re
 import importlib
 from pathlib import Path
-from .logger import logger
+import uvicorn
+from .adapter import logger
+
+
+# 启动服务
+def run(host="127.0.0.1", port=19900, reload=True):
+    uvicorn.run(
+        app=f"{__name__}:server_app",
+        host=host,
+        port=port,
+        reload=reload,
+    )
 
 
 # 导入模块
