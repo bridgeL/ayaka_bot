@@ -22,11 +22,10 @@ poetry run python app.py
 - 使用ws反向连接
 - port `19900`
 - ws地址 `ws://127.0.0.1:19900/ayakabot`
-- 启用上报自身信息（record插件保存聊天记录使用）`report-self-message: true`
 
 ## 修改ayaka bot
 当然，你也可以自己决定go-cqhttp的port、ws地址等，相应的，ayakabot需要修改：
 
 `app.py:ayaka.run()` 修改run的port参数
 
-`ayaka/adapter/_bot.py:@server_app.websocket("/ayakabot")` 修改websocket的地址
+`ayaka/driver.py:@app.websocket("/ayakabot")` 修改websocket的地址

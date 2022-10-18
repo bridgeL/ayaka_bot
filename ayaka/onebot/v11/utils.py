@@ -1,5 +1,5 @@
 from typing import Optional
-from ..logger import logger
+from ayaka.logger import logger
 
 
 def bool_to_str(b: Optional[bool]) -> Optional[str]:
@@ -66,7 +66,7 @@ def cqhttp_fuck(msg, ban_range: list):
     s = s.encode('utf8')
     length = len(s)
 
-    logger.debug(f"转义前utf8字符长度 <y>{length}</y>")
+    logger.opt(colors=True).debug(f"转义前utf8字符长度 <y>{length}</y>")
 
     if length in ban_range:
         return str(msg) + " "

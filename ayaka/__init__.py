@@ -1,4 +1,8 @@
-from .adapter import MessageEvent, GroupMessageEvent, Message, MessageSegment, Bot, on_event, on_connect, on_send, logger
-from .core import Ayaka, AyakaApp, AyakaDevice, AyakaBot, AyakaTrigger, AyakaStorage, AyakaCache, create_path, create_file, beauty_save, ayaka
-from .utils import import_plugins
-from .adapter import run
+'''安全起见，避免变量冲突'''
+from .ayaka import AyakaApp, AyakaStorage, get_new_page
+from .onebot.v11 import Message, MessageSegment
+from .logger import logger
+from .driver import run
+
+# 初始化内置插件
+from . import ayaka_master

@@ -1,12 +1,10 @@
 [tool.poetry]
 name = "ayaka-bot"
-version = "0.1.0"
+version = "0.2.0"
 description = ""
 authors = ["Su <wxlxy316@163.com>"]
 readme = "README.md"
-packages = [
-    {include = "../ayakabot"}
-]
+
 
 [tool.poetry.dependencies]
 python = "^3.8"

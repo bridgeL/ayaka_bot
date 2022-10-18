@@ -1,17 +1,16 @@
 import json
-from math import ceil
 from typing import Any, Callable, Awaitable, List, Union
 from functools import partial
 from typing_extensions import Protocol
 
-from .utils import escape, safe_cqhttp_utf8
+from .utils import safe_cqhttp_utf8
 from .result import ResultStore
 from .event import Event
 from .websocket import FastAPIWebSocket
 from .message import Message, MessageSegment
 from .model import DataclassEncoder
 
-from ..logger import logger
+from ayaka.logger import logger
 
 
 class _ApiCall(Protocol):
@@ -43,7 +42,7 @@ class Bot:
 
           调用 OneBot 协议 API
         """
-        logger.debug(f"Calling API <y>{api}</y>")
+        logger.opt(colors=True).debug(f"Calling API <y>{api}</y>")
 
         websocket = self.ws
         if not websocket:
@@ -117,31 +116,3 @@ class Bot:
         params["message"] = msg
 
         return await self.call_api("send_msg", **params)
-
-    async def send_group_forward_msg(
-        self,
-        group_id: int,
-        messages: List[str],
-    ) -> None:
-        # 自动分割长消息组（不可超过100条）
-        n = 80
-        for i in range(ceil(len(messages) / n)):
-            # 自动转换为cqhttp node格式
-            nodes = self.pack_message_nodes(messages[i*n: (i+1)*n])
-            await self.call_api("send_group_forward_msg", group_id=group_id, messages=nodes)
-
-    def pack_message_nodes(self, items: list):
-        '''
-            将数组打包为message_node格式的数组
-        '''
-        nodes = []
-        for m in items:
-            nodes.append({
-                "type": "node",
-                "data": {
-                    "name": "Ayaka Bot",
-                    "uin": self.self_id,
-                    "content": escape(str(m), escape_comma=False)
-                }
-            })
-        return nodes

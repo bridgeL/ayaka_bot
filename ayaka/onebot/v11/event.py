@@ -9,7 +9,7 @@ from .result import ResultStore
 from .model import DataclassEncoder
 from .message import Message
 
-from ..logger import logger
+from ayaka.logger import logger
 
 if TYPE_CHECKING:
     from .bot import Bot
@@ -586,8 +586,7 @@ def json_to_event(json_data) -> Optional[Event]:
 
     except:
         logger.exception()
-        info = f"<r>Failed to parse event.\nRaw: {json_data}</r>"
-        logger.error(info)
+        logger.opt(colors=True).error(f"<r>Failed to parse event.\nRaw: {json_data}</r>")
 
 
 __all__ = [
